@@ -1,4 +1,4 @@
-package org.gitter.patterns.creational.builder.before;
+package org.gitter.patterns.creational.builder.before.coffee;
 
 import org.gitter.patterns.creational.builder.modifiers.Caffeine;
 import org.gitter.patterns.creational.builder.modifiers.Dairy;
@@ -7,65 +7,48 @@ import org.gitter.patterns.creational.builder.modifiers.Flavor;
 import org.gitter.patterns.creational.builder.modifiers.Size;
 import org.gitter.patterns.creational.builder.modifiers.Sweetener;
 import org.gitter.patterns.creational.builder.modifiers.Temperature;
+import org.gitter.patterns.creational.builder.spec.Beverage;
 
 /**
- * This coffee class is showcasing a slight variation on the code smell where
- * the constructors are removed and instead setters are used to manage all of
- * the options post-creation. In this scenario, I may end up with an invalid
- * coffee if I forget to call one of the setters.
+ * This coffee class is showcasing a common code smell with constructors that
+ * grow out of control and become difficult to maintain. Setting defaults would
+ * require creating alternative constructors with fewer parameters. This can
+ * result in confusion for the clients depending on this class. We could also
+ * create an empty constructor with a bunch of property setters, but then it
+ * might be possible to create a coffee that is in an invalid state.
  */
-public class AlternativeCoffee implements Beverage {
+public class Coffee implements Beverage {
 
-	private Size size = Size.GRANDE;
+	private Size size;
 	private Caffeine caffeine;
 	private Dairy dairy;
 	private Drizzle drizzle;
 	private Flavor flavor;
 	private Sweetener sweetener;
 	private Temperature temperature;
-	private Boolean withWhipCream = false;
-	private Boolean withSprinkles = false;
+	private boolean withWhipCream;
+	private boolean withSprinkles;
 
-	public void setSize(Size size) {
+	public Coffee(Size size, Caffeine caffeine, Dairy dairy, Drizzle drizzle,
+			Flavor flavor, Sweetener sweetener, Temperature temperature,
+			boolean withWhipCream, boolean withSprinkles) {
+
 		this.size = size;
-	}
-
-	public void setCaffeine(Caffeine caffeine) {
 		this.caffeine = caffeine;
-	}
-
-	public void setDairy(Dairy dairy) {
 		this.dairy = dairy;
-	}
-
-	public void setDrizzle(Drizzle drizzle) {
 		this.drizzle = drizzle;
-	}
-
-	public void setFlavor(Flavor flavor) {
 		this.flavor = flavor;
-	}
-
-	public void setSweetener(Sweetener sweetener) {
 		this.sweetener = sweetener;
-	}
-
-	public void setTemperature(Temperature temperature) {
 		this.temperature = temperature;
-	}
-
-	public void setWithWhipCream(boolean withWhipCream) {
 		this.withWhipCream = withWhipCream;
-	}
-
-	public void setWithSprinkles(boolean withSprinkles) {
 		this.withSprinkles = withSprinkles;
+		
+		// you could do this first as well
+		validate();
 	}
 
 	@Override
 	public void drink() {
-		validate();
-
 		System.out.println("mmmm");
 	}
 
@@ -89,5 +72,4 @@ public class AlternativeCoffee implements Beverage {
 			throw new IllegalStateException("temperature is required");
 		}
 	}
-
 }

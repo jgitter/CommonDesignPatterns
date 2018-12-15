@@ -1,4 +1,4 @@
-package org.gitter.patterns.creational.builder.before;
+package org.gitter.patterns.creational.builder.after.coffee;
 
 import org.gitter.patterns.creational.builder.modifiers.Caffeine;
 import org.gitter.patterns.creational.builder.modifiers.Dairy;
@@ -7,15 +7,8 @@ import org.gitter.patterns.creational.builder.modifiers.Flavor;
 import org.gitter.patterns.creational.builder.modifiers.Size;
 import org.gitter.patterns.creational.builder.modifiers.Sweetener;
 import org.gitter.patterns.creational.builder.modifiers.Temperature;
+import org.gitter.patterns.creational.builder.spec.Beverage;
 
-/**
- * This coffee class is showcasing a common code smell with constructors that
- * grow out of control and become difficult to maintain. Setting defaults would
- * require creating alternative constructors with fewer parameters. This can
- * result in confusion for the clients depending on this class. We could also
- * create an empty constructor with a bunch of property setters, but then it
- * might be possible to create a coffee that is in an invalid state.
- */
 public class Coffee implements Beverage {
 
 	private Size size;
@@ -28,18 +21,42 @@ public class Coffee implements Beverage {
 	private boolean withWhipCream;
 	private boolean withSprinkles;
 
-	public Coffee(Size size, Caffeine caffeine, Dairy dairy, Drizzle drizzle,
-			Flavor flavor, Sweetener sweetener, Temperature temperature,
-			boolean withWhipCream, boolean withSprinkles) {
+	// intentionally package private constructor and setters
+	Coffee() {}
 
+	void setSize(Size size) {
 		this.size = size;
+	}
+
+	void setCaffeine(Caffeine caffeine) {
 		this.caffeine = caffeine;
+	}
+
+	void setDairy(Dairy dairy) {
 		this.dairy = dairy;
+	}
+
+	void setDrizzle(Drizzle drizzle) {
 		this.drizzle = drizzle;
+	}
+
+	void setFlavor(Flavor flavor) {
 		this.flavor = flavor;
+	}
+
+	void setSweetener(Sweetener sweetener) {
 		this.sweetener = sweetener;
+	}
+
+	void setTemperature(Temperature temperature) {
 		this.temperature = temperature;
+	}
+
+	void setWithWhipCream(boolean withWhipCream) {
 		this.withWhipCream = withWhipCream;
+	}
+
+	void setWithSprinkles(boolean withSprinkles) {
 		this.withSprinkles = withSprinkles;
 	}
 
@@ -47,5 +64,4 @@ public class Coffee implements Beverage {
 	public void drink() {
 		System.out.println("mmmm");
 	}
-
 }

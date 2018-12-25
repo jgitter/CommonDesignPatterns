@@ -1,19 +1,12 @@
-package org.gitter.patterns.creational.abstractfactory.afterV1.factory;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
+package org.gitter.patterns.creational.factories.after.factorymethod;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.border.EmptyBorder;
 
-public class LightHorizontalComponentFactory implements IComponentFactory {
+class LightHorizontalThemedApplication extends ApplicationBase {
 
-	LightHorizontalComponentFactory() {}
-	
 	@Override
 	public JFrame buildFrame() {
 		JFrame frame = new JFrame("Application");

@@ -1,27 +1,18 @@
-package org.gitter.patterns.creational.abstractfactory.afterV1.factory;
+package org.gitter.patterns.creational.factories.after.factorymethod;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.border.EmptyBorder;
 
-import org.gitter.patterns.creational.abstractfactory.Settings;
-import org.gitter.patterns.creational.abstractfactory.Settings.Layout;
-import org.gitter.patterns.creational.abstractfactory.Settings.Theme;
+class DarkVerticalThemedApplication extends ApplicationBase {
 
-public class DarkVerticalComponentFactory implements IComponentFactory {
-
-	DarkVerticalComponentFactory() {}
-	
 	@Override
 	public JFrame buildFrame() {
 		JFrame frame = new JFrame("Application");
-		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
+		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 
 		return frame;
@@ -43,4 +34,5 @@ public class DarkVerticalComponentFactory implements IComponentFactory {
 
 		return button;
 	}
+
 }

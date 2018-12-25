@@ -1,13 +1,11 @@
-package org.gitter.patterns.creational.abstractfactory.afterV2.factory;
+package org.gitter.patterns.creational.factories.after.abstractfactory;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class LightVerticalComponentFactory implements IComponentFactory {
-	
-	LightVerticalComponentFactory() {}
+public class LightVerticalComponentFactory implements IComponentFactory {
 
 	@Override
 	public JFrame buildFrame() {

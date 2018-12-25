@@ -1,19 +1,16 @@
-package org.gitter.patterns.creational.abstractfactory.afterV2.factory;
-
+package org.gitter.patterns.creational.factories.after.factorymethod;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class LightHorizontalComponentFactory implements IComponentFactory {
-	
-	LightHorizontalComponentFactory() {}
+class LightVerticalThemedApplication extends ApplicationBase {
 
 	@Override
 	public JFrame buildFrame() {
 		JFrame frame = new JFrame("Application");
-		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
+		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
 		return frame;
 	}
@@ -27,4 +24,5 @@ class LightHorizontalComponentFactory implements IComponentFactory {
 	public JButton buildButton() {
 		return new JButton("Click me");
 	}
+
 }

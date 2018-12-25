@@ -1,4 +1,4 @@
-package org.gitter.patterns.creational.abstractfactory.afterV2.factory;
+package org.gitter.patterns.creational.factories.after.abstractfactory;
 
 import java.awt.Color;
 
@@ -7,10 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class DarkHorizontalComponentFactory implements IComponentFactory {
+public class DarkHorizontalComponentFactory implements IComponentFactory {
 
-	DarkHorizontalComponentFactory() {}
-	
 	@Override
 	public JFrame buildFrame() {
 		JFrame frame = new JFrame("Application");

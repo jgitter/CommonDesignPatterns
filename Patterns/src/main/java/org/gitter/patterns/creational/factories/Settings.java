@@ -1,4 +1,4 @@
-package org.gitter.patterns.creational.abstractfactory;
+package org.gitter.patterns.creational.factories;
 
 import java.io.IOException;
 import java.util.Properties;

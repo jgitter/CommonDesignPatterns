@@ -1,4 +1,4 @@
-package org.gitter.patterns.creational.abstractfactory.afterV1.factory;
+package org.gitter.patterns.creational.factories.after.abstractfactory;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

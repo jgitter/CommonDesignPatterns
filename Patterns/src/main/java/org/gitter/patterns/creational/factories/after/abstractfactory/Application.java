@@ -1,4 +1,4 @@
-package org.gitter.patterns.creational.abstractfactory.afterV1;
+package org.gitter.patterns.creational.factories.after.abstractfactory;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -10,21 +10,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
-import org.gitter.patterns.creational.abstractfactory.afterV1.factory.ComponentFactoryFactory;
-import org.gitter.patterns.creational.abstractfactory.afterV1.factory.IComponentFactory;
+public class Application implements ActionListener {
 
-public class Main implements ActionListener {
+	private IComponentFactory factory;
 
 	private JFrame frame;
 	private JLabel label;
 	private JButton button;
 	private AtomicInteger clicks = new AtomicInteger(0);
 
-	public static void main(String[] args) {
-		new Main().run(ComponentFactoryFactory.getComponentFactory());
+	public Application(IComponentFactory factory) {
+		this.factory = factory;
 	}
 
-	private void run(IComponentFactory factory) {
+	public void run() {
 		frame = factory.buildFrame();
 		frame.setMinimumSize(new Dimension(200, 100));
 

@@ -1,4 +1,4 @@
-package org.gitter.patterns.creational.abstractfactory.before;
+package org.gitter.patterns.creational.factories.before;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,9 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
-import org.gitter.patterns.creational.abstractfactory.Settings;
-import org.gitter.patterns.creational.abstractfactory.Settings.Layout;
-import org.gitter.patterns.creational.abstractfactory.Settings.Theme;
+import org.gitter.patterns.creational.factories.Settings;
+import org.gitter.patterns.creational.factories.Settings.Layout;
+import org.gitter.patterns.creational.factories.Settings.Theme;
 
 public class Main implements ActionListener {
 

@@ -5,12 +5,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class LightVerticalThemedApplication extends ApplicationBase {
+public class DefaultComponentFactory implements ComponentFactory {
 
 	@Override
 	public JFrame buildFrame() {
 		JFrame frame = new JFrame("Application");
-		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
 
 		return frame;
 	}

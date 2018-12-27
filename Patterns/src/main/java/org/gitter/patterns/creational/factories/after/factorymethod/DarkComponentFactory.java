@@ -2,17 +2,16 @@ package org.gitter.patterns.creational.factories.after.factorymethod;
 
 import java.awt.Color;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class DarkVerticalThemedApplication extends ApplicationBase {
+public class DarkComponentFactory extends DefaultComponentFactory implements ComponentFactory {
 
 	@Override
 	public JFrame buildFrame() {
-		JFrame frame = new JFrame("Application");
-		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+		JFrame frame = super.buildFrame();
+
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 
 		return frame;
@@ -20,7 +19,8 @@ class DarkVerticalThemedApplication extends ApplicationBase {
 
 	@Override
 	public JLabel buildLabel() {
-		JLabel label = new JLabel("Click the button");
+		JLabel label = super.buildLabel();
+
 		label.setForeground(new Color(180, 255, 230));
 
 		return label;
@@ -28,7 +28,8 @@ class DarkVerticalThemedApplication extends ApplicationBase {
 
 	@Override
 	public JButton buildButton() {
-		JButton button = new JButton("Click me");
+		JButton button = super.buildButton();
+
 		button.setBackground(Color.DARK_GRAY);
 		button.setForeground(new Color(180, 255, 230));
 

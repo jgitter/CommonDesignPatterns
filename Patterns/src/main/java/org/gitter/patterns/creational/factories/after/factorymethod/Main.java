@@ -3,31 +3,42 @@ package org.gitter.patterns.creational.factories.after.factorymethod;
 import org.gitter.patterns.creational.factories.Settings;
 import org.gitter.patterns.creational.factories.Settings.Layout;
 import org.gitter.patterns.creational.factories.Settings.Theme;
+import org.picocontainer.MutablePicoContainer;
+import org.picocontainer.PicoContainer;
+import org.picocontainer.defaults.DefaultPicoContainer;
 
 public class Main  {
 
 	public static void main(String[] args) {
-		getApplication().run();
+		PicoContainer container = getIocContainer();
+		
+		Application application = (Application) container.getComponentInstanceOfType(Application.class);
+		
+		application.run();
 	}
 
-	private static ApplicationBase getApplication() {
+	private static PicoContainer getIocContainer() {
+		MutablePicoContainer container = new DefaultPicoContainer();
+
 		Layout layout = Settings.getLayout();
 		Theme theme = Settings.getTheme();
 
-		if (layout == Layout.HORIZONTAL) {
-			if (theme == Theme.DARK) {
-				return new DarkHorizontalThemedApplication();
-			} else if (theme == Theme.LIGHT) {
-				return new LightHorizontalThemedApplication();
+		if (theme == Theme.LIGHT) {
+			if (layout == Layout.HORIZONTAL) {
+				container.registerComponentImplementation(DefaultComponentFactory.class);
+			} else if (layout == Layout.VERTICAL) {
+				container.registerComponentImplementation(VerticalComponentFactory.class);
 			}
-		} else if (layout == Layout.VERTICAL) {
-			if (theme == Theme.DARK) {
-				return new DarkVerticalThemedApplication();
-			} else if (theme == Theme.LIGHT) {
-				return new LightVerticalThemedApplication();
+		} else if (theme == Theme.DARK) {
+			if (layout == Layout.HORIZONTAL) {
+				container.registerComponentImplementation(DarkComponentFactory.class);
+			} else if (layout == Layout.VERTICAL) {
+				container.registerComponentImplementation(DarkVerticalComponentFactory.class);
 			}
 		}
 		
-		return null;
+		container.registerComponentImplementation(Application.class);
+
+		return container;
 	}
 }

@@ -10,21 +10,28 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
-public abstract class ApplicationBase implements ActionListener {
+public class Application implements ActionListener {
 
 	private JFrame frame;
 	private JLabel label;
 	private JButton button;
+	
 	private AtomicInteger clicks = new AtomicInteger(0);
+	
+	private ComponentFactory factory;
+	
+	public Application(ComponentFactory factory) {
+		this.factory = factory;
+	}
 
 	public void run() {
-		frame = buildFrame();
+		frame = factory.buildFrame();
 		frame.setMinimumSize(new Dimension(200, 100));
 
-		label = buildLabel();
+		label = factory.buildLabel();
 		label.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-		button = buildButton();
+		button = factory.buildButton();
 		button.setBorder(new EmptyBorder(10, 10, 10, 10));
 		button.addActionListener(this);
 
@@ -41,11 +48,5 @@ public abstract class ApplicationBase implements ActionListener {
 		label.setText("Clicked " + count + (count == 1 ? " time" : " times"));
 		frame.pack();
 	}
-
-	protected abstract JButton buildButton();
-
-	protected abstract  JLabel buildLabel();
-
-	protected abstract  JFrame buildFrame();
 
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="lorem">foo</entry>
+    <entry key="ipsum">1</entry>
+    <entry key="dolor">2</entry>
+    <entry key="sit">3</entry>
+    <entry key="amet">chuck norris</entry>
+    <entry key="consectetur">batman</entry>
+    <entry key="adipiscing">42</entry>
+    <entry key="elit">bar</entry>
+</properties>
